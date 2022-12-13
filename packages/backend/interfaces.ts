@@ -1,6 +1,6 @@
 export type MovieDetails = {
   title: string;
   description: string;
-  ageLimit: number;
+  ageLimit: string;
   createdAt: Date;
 };

@@ -11,7 +11,7 @@ const movieSchema = new Schema<MovieDetails>({
     required: true,
   },
   ageLimit: {
-    type: Number,
+    type: String,
     required: true,
   },
   createdAt: { type: Date, default: Date.now },
