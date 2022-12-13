@@ -17,8 +17,7 @@ export default function AddMovieForm({ formData, setFormData }) {
 
   const AddMutation = useMutation(addMovie, {
     onSuccess: () => {
-      queryClient.prefetchQuery(["movies", getMovies({})]);
-      //
+      queryClient.invalidateQueries(["movies"]);
     },
   });
 

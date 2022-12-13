@@ -4,7 +4,6 @@ import Bug from "./bug";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { getMovie, updateMovie, getMovies } from "./use-cases /movie.use-case";
 import { ageLimitOptions } from "./addMovieForm";
-import { useMemo } from "react";
 
 export default function UpdateMovieForm({ formId, formData, setFormData }) {
   const queryClient = useQueryClient();
@@ -17,8 +16,7 @@ export default function UpdateMovieForm({ formId, formData, setFormData }) {
     async (newData) => await updateMovie(formId, newData),
     {
       onSuccess: () => {
-        queryClient.prefetchQuery(["movies", getMovies({})]);
-        //
+        queryClient.invalidateQueries(["movies"]);
       },
     }
   );

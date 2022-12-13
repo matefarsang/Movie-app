@@ -24,9 +24,8 @@ export default function Home() {
   const deleteHandler = async () => {
     if (deleteId) {
       await deleteMovie(deleteId);
-      await queryClient.prefetchQuery(["movies", getMovies({})]);
       await dispatch(deleteAction(null));
-      //
+      await queryClient.invalidateQueries(["movies"]);
     }
   };
 
