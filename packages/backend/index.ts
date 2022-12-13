@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import logger from "./middlewares/logger/logger";
 
 const port = process.env.PORT || 3001;
-const mongoDbUrl = process.env.MONGO_URL || "mongodb://localhost:27017";
+const mongoDbUrl = process.env.MONGO_URL || "mongodb://db:27017";
 
 mongoose
   .connect(`${mongoDbUrl}`, {})

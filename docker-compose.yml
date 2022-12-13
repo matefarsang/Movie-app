@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  db:
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    networks:
+      - backend
+    volumes:
+      - ~/apps/mongo:/data/db
+    restart: always
+  server:
+    build: ./packages/backend
+    ports:
+      - 3001:3001
+    networks:
+      - backend
+    restart: always
+    depends_on:
+      - db
+  client:
+    build: ./packages/frontend
+    environment:
+      - PORT=4001
+    ports:
+      - 4001:4001
+    restart: always
+
+networks:
+  backend:
