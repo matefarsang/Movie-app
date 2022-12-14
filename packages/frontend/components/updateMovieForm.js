@@ -13,7 +13,7 @@ export default function UpdateMovieForm({ formId, formData, setFormData }) {
   );
 
   const UpdateMutation = useMutation(
-    async (newData) => await updateMovie(formId, newData),
+    (newData) => updateMovie(formId, newData),
     {
       onSuccess: () => {
         queryClient.invalidateQueries(["movies"]);
